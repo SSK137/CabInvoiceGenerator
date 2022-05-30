@@ -13,12 +13,12 @@ public class CabInvoiceGenerator {
         return totalFare;
     }
 
-    public double CalculateFare(Rides[] rides) {
+    public InvoiceSummary CalculateFare(Rides[] rides) {
         double totalFare = 0;
         for (Rides ride : rides) {
             totalFare += this.CalculateFare(ride.distance, (int) ride.time);
         }
-        return totalFare;
+        return new InvoiceSummary(rides.length,totalFare);
     }
 }
 

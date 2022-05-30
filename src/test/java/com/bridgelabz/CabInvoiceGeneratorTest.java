@@ -32,8 +32,19 @@ public class CabInvoiceGeneratorTest {
         Rides[] rides = {new Rides(2.0, 5),
                 new Rides(0.1, 1)
         };
-        double fare = invoiceGenerator.CalculateFare(rides);
+        InvoiceSummary fare = invoiceGenerator.CalculateFare(rides);
         double expected = 30;
         Assertions.assertEquals(expected, fare);
+    }
+
+    @Test
+    public void givenMultipleRide_ShouldReturnInvoiceSummary(){
+        CabInvoiceGenerator invoiceGerator = new CabInvoiceGenerator();
+        Rides[] rides = {new Rides(2.0, 5),
+                new Rides(0.11,1)
+        };
+        InvoiceSummary summary = invoiceGerator.CalculateFare(rides);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+        Assertions.assertEquals(expectedInvoiceSummary,summary);
     }
 }
