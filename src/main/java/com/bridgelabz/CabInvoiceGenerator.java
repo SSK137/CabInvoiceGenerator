@@ -9,8 +9,9 @@ public class CabInvoiceGenerator {
         double totalFare = distance * minimumCostPerKilometer + time * costPerMinute;
         if (totalFare < minimumFare) {
             return minimumFare;
+        }else {
+            return totalFare;
         }
-        return totalFare;
     }
 
     public InvoiceSummary CalculateFare(Rides[] rides) {
